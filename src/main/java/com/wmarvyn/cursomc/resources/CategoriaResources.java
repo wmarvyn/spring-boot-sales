@@ -23,5 +23,6 @@ public class CategoriaResources {
 		lista.add(cat2);
 		return lista;
 	}
+	
 
 }
