@@ -51,7 +51,7 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		produtoRspository.save(p1);
 		produtoRspository.save(p2);
-		produtoRspository.save(p3);
+		//produtoRspository.save(p3);
 		
 	}
 
