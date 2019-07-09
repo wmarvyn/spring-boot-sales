@@ -18,4 +18,5 @@ public class CategoriaServie {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElse(null);
 		}
+	
 }

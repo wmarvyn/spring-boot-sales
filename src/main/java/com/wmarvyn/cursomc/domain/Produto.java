@@ -34,7 +34,6 @@ public class Produto implements Serializable{
 		
 	}
 
-
 	public Produto(Integer iD, String nome, double preco) {
 		super();
 		ID = iD;
@@ -42,11 +41,9 @@ public class Produto implements Serializable{
 		this.preco = preco;
 	}
 
-
 	public Integer getID() {
 		return ID;
 	}
-
 
 	public void setID(Integer iD) {
 		ID = iD;
