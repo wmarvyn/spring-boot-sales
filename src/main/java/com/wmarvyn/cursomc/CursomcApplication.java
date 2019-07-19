@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.wmarvyn.cursomc.domain.Categoria;
 import com.wmarvyn.cursomc.domain.Produto;
-import com.wmarvyn.cursomc.repositores.CategoriaRspository;
+import com.wmarvyn.cursomc.repositores.CategoriaRepository;
 import com.wmarvyn.cursomc.repositores.ProdutoRepository;
 
 
@@ -17,7 +17,7 @@ import com.wmarvyn.cursomc.repositores.ProdutoRepository;
 public class CursomcApplication implements CommandLineRunner{
 
 	@Autowired
-	private CategoriaRspository categoriaRspository;
+	private CategoriaRepository categoriaRspository;
 	
 	@Autowired
 	private ProdutoRepository produtoRspository;
