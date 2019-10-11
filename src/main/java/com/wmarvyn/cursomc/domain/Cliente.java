@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
 	private String cpfCnpj;
 	private Integer tipo;
 	
-	private List Encereco = new ArrayList<>();
+//	private List Encereco = new ArrayList<>();
 	
 	private Set<String> telefones = new HashSet<>();
 	
@@ -69,21 +69,21 @@ public class Cliente implements Serializable {
 		this.cpfCnpj = cpfCnpj;
 	}
 
-	public TipoCliente getTipo() {
-		return TipoCliente.toEnum(tipo);
-	}
+//	public TipoCliente getTipo() {
+//		return TipoCliente.toEnum(tipo);
+//	}
 
 	public void setTipo(TipoCliente tipo) {
 		this.tipo = tipo.getCod();
 	}
 
-	public List getEncereco() {
-		return Encereco;
-	}
-
-	public void setEncereco(List encereco) {
-		Encereco = encereco;
-	}
+//	public List getEncereco() {
+//		return Encereco;
+//	}
+//
+//	public void setEncereco(List encereco) {
+//		Encereco = encereco;
+//	}
 
 	public Set<String> getTelefones() {
 		return telefones;
