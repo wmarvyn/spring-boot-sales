@@ -2,9 +2,19 @@ package com.wmarvyn.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String logradouro;
 	private String numero;
@@ -12,8 +22,13 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 	
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
+	
+	@ManyToOne
+	@JoinColumn(name="cidade_id")
 	private Cidades cidades;
 	
 	public Endereco() {
@@ -29,7 +44,7 @@ public class Endereco implements Serializable {
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cliente = cliente;
-		this.setCidades(cidades);
+		this.cidades = cidades;
 	}
 
 	public Integer getId() {
@@ -96,6 +111,10 @@ public class Endereco implements Serializable {
 		this.cidades = cidades;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,7 +139,4 @@ public class Endereco implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 }
