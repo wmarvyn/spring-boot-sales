@@ -37,7 +37,9 @@ public class Cliente implements Serializable {
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
-	
+
+	public List<Pedido> pedidos = new ArrayList<>();
+
 	public Cliente() {
 	}
 
@@ -49,6 +51,8 @@ public class Cliente implements Serializable {
 		this.cpfCnpj = cpfCnpj;
 		this.tipo = tipo.getCod();
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -100,6 +104,14 @@ public class Cliente implements Serializable {
 
 	public Set<String> getTelefones() {
 		return telefones;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public void setTelefones(Set<String> telefones) {
