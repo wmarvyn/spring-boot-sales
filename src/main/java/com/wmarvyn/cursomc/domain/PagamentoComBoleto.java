@@ -5,6 +5,9 @@ import java.util.Date;
 
 import com.wmarvyn.cursomc.domain.enums.EstadoPagamento;
 
+import javax.persistence.Entity;
+
+@Entity
 public class PagamentoComBoleto extends Pagamento{
     private static final long serialVersionUID = 1L;
 

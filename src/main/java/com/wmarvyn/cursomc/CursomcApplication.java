@@ -1,18 +1,15 @@
 package com.wmarvyn.cursomc;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
+import com.wmarvyn.cursomc.domain.*;
+import com.wmarvyn.cursomc.domain.enums.EstadoPagamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.wmarvyn.cursomc.domain.Categoria;
-import com.wmarvyn.cursomc.domain.Cidades;
-import com.wmarvyn.cursomc.domain.Cliente;
-import com.wmarvyn.cursomc.domain.Endereco;
-import com.wmarvyn.cursomc.domain.Estado;
-import com.wmarvyn.cursomc.domain.Produto;
 import com.wmarvyn.cursomc.domain.enums.TipoCliente;
 import com.wmarvyn.cursomc.repositores.CategoriaRepository;
 import com.wmarvyn.cursomc.repositores.CidadeRepository;
@@ -103,6 +100,14 @@ public class CursomcApplication implements CommandLineRunner{
 		enderecoRepository.saveAll(Arrays.asList(e1,e2));
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
+
+		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+		//Pedido ped1 = new Pedido(null,sdf.parse("30/09/2019 10:00"),cli1,e1);
+		//Pedido ped2 = new Pedido(null,sdf.parse("30/10/2019 10:00"),cli1,e2);
+
+		//Pagamento pagt1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO,ped1,6);
+		//pagt1.setp
 
 	}
 
