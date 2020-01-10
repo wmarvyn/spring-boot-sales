@@ -1,6 +1,8 @@
 package com.wmarvyn.cursomc.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wmarvyn.cursomc.domain.enums.EstadoPagamento;
 
 
@@ -18,6 +20,7 @@ public abstract class Pagamento implements Serializable {
 	private Integer id;
 	private Integer estado;
 
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId
@@ -28,6 +31,7 @@ public abstract class Pagamento implements Serializable {
 
 	}
 
+	@JsonIgnore
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		this.id = id;
 		this.estado = estado.getCod();
@@ -50,6 +54,7 @@ public abstract class Pagamento implements Serializable {
 		this.estado = estado.getCod();
 	}
 
+	@JsonIgnore
 	public Pedido getPedido() {
 		return pedido;
 	}

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wmarvyn.cursomc.domain.Produto;
 
@@ -53,6 +54,7 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
+	@JsonIgnore
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -85,7 +87,4 @@ public class Categoria implements Serializable {
 			return false;
 		return true;
 	}
-
-
-
 }
