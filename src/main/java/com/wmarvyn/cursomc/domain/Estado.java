@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wmarvyn.cursomc.domain.Cidades;
 
 @Entity
@@ -25,7 +26,7 @@ public class Estado implements Serializable{
 
 	
 	@OneToMany(mappedBy = "estado")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Cidades> cidades = new ArrayList<>();
 
 	public Estado(){
