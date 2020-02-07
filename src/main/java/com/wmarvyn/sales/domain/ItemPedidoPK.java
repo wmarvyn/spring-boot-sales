@@ -1,13 +1,13 @@
 package com.wmarvyn.sales.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
-import java.util.Objects;
 
 @Embeddable
 public class ItemPedidoPK implements Serializable{
