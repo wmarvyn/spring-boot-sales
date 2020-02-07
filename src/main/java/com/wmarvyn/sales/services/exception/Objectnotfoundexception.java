@@ -11,6 +11,7 @@ public class Objectnotfoundexception extends RuntimeException{
 	
 	public Objectnotfoundexception(String msg, Throwable cause) {
 		super (msg, cause);
+		
 	}
 
 }
