@@ -28,4 +28,8 @@ public class CategoriaServie {
 		return repo.save(obj);
 	}
 
+		public void delete(Integer id) throws ObjectNotFoundException {
+			find(id);
+			repo.deleteById(id);
+		}
 }
