@@ -9,10 +9,10 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.wmarvyn.cursomc</groupId>
-	<artifactId>cursomc</artifactId>
+	<groupId>com.wmarvyn.sales</groupId>
+	<artifactId>sales</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cursomc</name>
+	<name>sales</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

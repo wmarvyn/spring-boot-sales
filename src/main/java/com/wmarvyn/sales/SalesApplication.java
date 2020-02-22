@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class CursomcApplication implements CommandLineRunner{
+public class SalesApplication implements CommandLineRunner{
 
 	@Autowired
 	private CategoriaRepository categoriaRspository;
@@ -46,7 +46,7 @@ public class CursomcApplication implements CommandLineRunner{
 	
 	
 	public static void main(String[] args) {
-		SpringApplication.run(CursomcApplication.class, args);
+		SpringApplication.run(SalesApplication.class, args);
 	}
 
 	@Override
