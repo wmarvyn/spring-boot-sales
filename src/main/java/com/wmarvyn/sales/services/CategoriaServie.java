@@ -1,5 +1,6 @@
 package com.wmarvyn.sales.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.wmarvyn.sales.services.exception.DataIntegrityException;
@@ -43,5 +44,11 @@ public class CategoriaServie {
 			}catch (DataIntegrityViolationException e){
 			throw new DataIntegrityException("Não é possivel excluir uma categoria com produtos associados");
 			}
+		}
+
+		public List<Categoria> findAll(){
+
+		return repo.findAll();
+
 		}
 }

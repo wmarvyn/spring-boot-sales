@@ -1,5 +1,6 @@
 package com.wmarvyn.sales.resources;
 
+import com.wmarvyn.sales.dto.CategoriaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,8 @@ import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/categorias")
@@ -47,5 +50,12 @@ public class CategoriaResources {
 	public ResponseEntity<Void> delete( @PathVariable Integer id) throws Objectnotfoundexception, ObjectNotFoundException {
 		Service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDTO>> find() throws Objectnotfoundexception, ObjectNotFoundException {
+		List<Categoria> list = Service.findAll();
+		List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
 	}
 }
