@@ -30,6 +30,7 @@ public class CategoriaServie {
 
 		public void delete(Integer id) throws ObjectNotFoundException {
 			find(id);
+			System.out.println("Passando pelo delete");
 			repo.deleteById(id);
 		}
 }

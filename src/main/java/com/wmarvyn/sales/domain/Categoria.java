@@ -51,7 +51,6 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	@JsonIgnore
 	public List<Produto> getProdutos() {
 		return produtos;
 	}

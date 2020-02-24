@@ -27,7 +27,7 @@ public class Produto implements Serializable{
 	private Integer ID;
 	private String nome;
 	private double preco;
-	
+
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "Produto_categoria", 
