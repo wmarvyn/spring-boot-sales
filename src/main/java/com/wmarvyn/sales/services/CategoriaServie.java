@@ -2,7 +2,9 @@ package com.wmarvyn.sales.services;
 
 import java.util.Optional;
 
+import com.wmarvyn.sales.services.exception.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.wmarvyn.sales.domain.Categoria;
@@ -36,6 +38,10 @@ public class CategoriaServie {
 		public void delete(Integer id) throws ObjectNotFoundException {
 			find(id);
 			//System.out.println("Passando pelo delete");
-			repo.deleteById(id);
+			try {
+				repo.deleteById(id);
+			}catch (DataIntegrityViolationException e){
+			throw new DataIntegrityException("Não é possivel excluir uma categoria com produtos associados");
+			}
 		}
 }
