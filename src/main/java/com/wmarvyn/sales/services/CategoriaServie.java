@@ -28,9 +28,14 @@ public class CategoriaServie {
 		return repo.save(obj);
 	}
 
+	public Categoria update(Categoria obj) throws ObjectNotFoundException {
+		find(obj.getId());
+	return repo.save(obj);
+	}
+
 		public void delete(Integer id) throws ObjectNotFoundException {
 			find(id);
-			System.out.println("Passando pelo delete");
+			//System.out.println("Passando pelo delete");
 			repo.deleteById(id);
 		}
 }

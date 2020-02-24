@@ -21,7 +21,7 @@ public class ClienteResources {
 	private ClienteServie Service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find( @PathVariable Integer id) throws Objectnotfoundexception, ObjectNotFoundException {
+	public ResponseEntity<Cliente> find( @PathVariable Integer id) throws Objectnotfoundexception, ObjectNotFoundException {
 		
 		Cliente obj = Service.find(id);
 		return ResponseEntity.ok().body(obj);

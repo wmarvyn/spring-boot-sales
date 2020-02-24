@@ -21,7 +21,7 @@ public class CategoriaResources {
 	private CategoriaServie Service;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find( @PathVariable Integer id) throws Objectnotfoundexception, ObjectNotFoundException {
+	public ResponseEntity<Categoria> find( @PathVariable Integer id) throws Objectnotfoundexception, ObjectNotFoundException {
 		
 		Categoria obj = Service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -34,6 +34,13 @@ public class CategoriaResources {
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 
 		return ResponseEntity.created(uri).build();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Categoria obj,@PathVariable Integer id) throws ObjectNotFoundException {
+		obj.setId(id);
+		obj = Service.update(obj);
+		return  ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
