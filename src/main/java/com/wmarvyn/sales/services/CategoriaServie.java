@@ -6,12 +6,15 @@ import java.util.Optional;
 import com.wmarvyn.sales.services.exception.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.wmarvyn.sales.domain.Categoria;
 import com.wmarvyn.sales.repositores.CategoriaRepository;
 
 import javassist.tools.rmi.ObjectNotFoundException;
+import org.springframework.data.domain.Page;
 
 @Service
 public class CategoriaServie {
@@ -47,8 +50,13 @@ public class CategoriaServie {
 		}
 
 		public List<Categoria> findAll(){
-
 		return repo.findAll();
+		}
 
+		public Page<Categoria> finPage(Integer page, Integer lineInteger, String orderBy, String direction){
+
+			PageRequest pageRequest = new PageRequest(page,lineInteger, Sort.Direction.fromString(direction),orderBy);
+
+			return  repo.findAll(pageRequest);
 		}
 }

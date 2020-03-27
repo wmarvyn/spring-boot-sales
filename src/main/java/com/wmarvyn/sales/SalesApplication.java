@@ -53,6 +53,15 @@ public class SalesApplication implements CommandLineRunner{
 
 		Categoria cat1 = new Categoria(null, "Informatica");
 		Categoria cat2 = new Categoria(null, "Escrotorio");
+		Categoria cat3 = new Categoria(null, "cat3");
+		Categoria cat4 = new Categoria(null, "cat4");
+		Categoria cat5 = new Categoria(null, "cat5");
+		Categoria cat6 = new Categoria(null, "cat6");
+		Categoria cat7 = new Categoria(null, "cat7");
+		Categoria cat8 = new Categoria(null, "cat8");
+		Categoria cat9 = new Categoria(null, "cat9");
+		Categoria cat10 = new Categoria(null, "cat10");
+
 		
 		Produto p1 = new Produto(null,"Computador",20000.00);
 		Produto p2 = new Produto(null,"Impressora",800.00);
@@ -66,9 +75,8 @@ public class SalesApplication implements CommandLineRunner{
 		p2.getCategorias().addAll(Arrays.asList(cat1,cat2));
 		p3.getCategorias().addAll(Arrays.asList(cat1));
 		
-		categoriaRspository.save(cat1);
-		categoriaRspository.save(cat2);
-		
+		categoriaRspository.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10));
+
 		produtoRspository.save(p1);
 		produtoRspository.save(p2);
 		produtoRspository.save(p3);

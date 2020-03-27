@@ -2,6 +2,7 @@ package com.wmarvyn.sales.resources;
 
 import com.wmarvyn.sales.dto.CategoriaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,4 +59,18 @@ public class CategoriaResources {
 		List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
+
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public ResponseEntity<Page<CategoriaDTO>> find(
+			@RequestParam (value = "page", defaultValue = "0")Integer page,
+			@RequestParam (value = "linesPerPage", defaultValue = "24")Integer lineInteger,
+			@RequestParam (value = "oderBy", defaultValue = "nome")String orderBy,
+			@RequestParam (value = "direction", defaultValue = "ASC")String direction)
+			throws Objectnotfoundexception, ObjectNotFoundException {
+		Page<Categoria> list = Service.finPage(page,lineInteger,orderBy,direction);
+		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
+		return ResponseEntity.ok().body(listDto);
+	}
+
+
 }
