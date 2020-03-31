@@ -13,6 +13,7 @@ import com.wmarvyn.sales.services.exception.Objectnotfoundexception;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,8 @@ public class CategoriaResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Categoria obj){
+	public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDto){
+		Categoria obj = Service.fromDTO(objDto);
 		obj = Service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -41,7 +43,8 @@ public class CategoriaResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Categoria obj,@PathVariable Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDTO,@PathVariable Integer id) throws ObjectNotFoundException {
+		Categoria obj = Service.fromDTO(objDTO);
 		obj.setId(id);
 		obj = Service.update(obj);
 		return  ResponseEntity.noContent().build();
@@ -66,7 +69,7 @@ public class CategoriaResources {
 			@RequestParam (value = "linesPerPage", defaultValue = "24")Integer lineInteger,
 			@RequestParam (value = "oderBy", defaultValue = "nome")String orderBy,
 			@RequestParam (value = "direction", defaultValue = "ASC")String direction)
-			throws Objectnotfoundexception, ObjectNotFoundException {
+				throws Objectnotfoundexception, ObjectNotFoundException {
 		Page<Categoria> list = Service.finPage(page,lineInteger,orderBy,direction);
 		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
 		return ResponseEntity.ok().body(listDto);

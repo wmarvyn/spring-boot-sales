@@ -3,6 +3,7 @@ package com.wmarvyn.sales.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.wmarvyn.sales.dto.CategoriaDTO;
 import com.wmarvyn.sales.services.exception.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -58,5 +59,9 @@ public class CategoriaServie {
 			PageRequest pageRequest = new PageRequest(page,lineInteger, Sort.Direction.fromString(direction),orderBy);
 
 			return  repo.findAll(pageRequest);
+		}
+
+		public Categoria fromDTO(CategoriaDTO objDto){
+			return new Categoria(objDto.getId(),objDto.getNome());
 		}
 }
