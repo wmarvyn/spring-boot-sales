@@ -42,7 +42,6 @@ public class CategoriaServie {
 
 		public void delete(Integer id) throws ObjectNotFoundException {
 			find(id);
-			//System.out.println("Passando pelo delete");
 			try {
 				repo.deleteById(id);
 			}catch (DataIntegrityViolationException e){
