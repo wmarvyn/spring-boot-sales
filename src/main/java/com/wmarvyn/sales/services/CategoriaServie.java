@@ -26,41 +26,41 @@ public class CategoriaServie {
 	public Categoria find(Integer id) throws ObjectNotFoundException {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-		"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
-		
-		}
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 
-		public Categoria insert (Categoria obj){
+	}
+
+	public Categoria insert(Categoria obj) {
 		obj.setId((null));
 		return repo.save(obj);
 	}
 
 	public Categoria update(Categoria obj) throws ObjectNotFoundException {
 		find(obj.getId());
-	return repo.save(obj);
+		return repo.save(obj);
 	}
 
-		public void delete(Integer id) throws ObjectNotFoundException {
-			find(id);
-			try {
-				repo.deleteById(id);
-			}catch (DataIntegrityViolationException e){
+	public void delete(Integer id) throws ObjectNotFoundException {
+		find(id);
+		try {
+			repo.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possivel excluir uma categoria com produtos associados");
-			}
 		}
+	}
 
-		public List<Categoria> findAll(){
+	public List<Categoria> findAll() {
 		return repo.findAll();
-		}
+	}
 
-		public Page<Categoria> finPage(Integer page, Integer lineInteger, String orderBy, String direction){
+	public Page<Categoria> finPage(Integer page, Integer lineInteger, String orderBy, String direction) {
 
-			PageRequest pageRequest = new PageRequest(page,lineInteger, Sort.Direction.fromString(direction),orderBy);
+		PageRequest pageRequest = new PageRequest(page, lineInteger, Sort.Direction.fromString(direction), orderBy);
 
-			return  repo.findAll(pageRequest);
-		}
+		return repo.findAll(pageRequest);
+	}
 
-		public Categoria fromDTO(CategoriaDTO objDto){
-			return new Categoria(objDto.getId(),objDto.getNome());
-		}
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
+	}
 }
