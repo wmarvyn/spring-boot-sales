@@ -3,6 +3,7 @@ package com.wmarvyn.sales.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.wmarvyn.sales.domain.Cliente;
 import com.wmarvyn.sales.dto.CategoriaDTO;
 import com.wmarvyn.sales.services.exception.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,11 @@ public class CategoriaServie {
 		return repo.save(obj);
 	}
 
+
 	public Categoria update(Categoria obj) throws ObjectNotFoundException {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
 	}
 
 	public void delete(Integer id) throws ObjectNotFoundException {
@@ -62,5 +65,9 @@ public class CategoriaServie {
 
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
+	}
+
+	private void updateData (Categoria newObj, Categoria obj){
+		newObj.setNome(obj.getNome());
 	}
 }
