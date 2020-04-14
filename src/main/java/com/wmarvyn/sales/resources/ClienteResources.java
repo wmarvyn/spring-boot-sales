@@ -1,8 +1,13 @@
 package com.wmarvyn.sales.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
+
+import com.wmarvyn.sales.domain.Categoria;
+import com.wmarvyn.sales.dto.CategoriaDTO;
+import com.wmarvyn.sales.dto.ClienteNewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +24,7 @@ import com.wmarvyn.sales.services.ClienteServie;
 import com.wmarvyn.sales.services.exception.Objectnotfoundexception;
 
 import javassist.tools.rmi.ObjectNotFoundException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/clientes")
@@ -32,6 +38,15 @@ public class ClienteResources {
 		
 		Cliente obj = Service.find(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) throws IllegalAccessException {
+		Cliente obj = Service.fromDTO(objDto);
+		obj = Service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+
+		return ResponseEntity.created(uri).build();
 	}
 	
 	

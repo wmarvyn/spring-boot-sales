@@ -58,7 +58,10 @@ public class CategoriaServie {
 
 	public Page<Categoria> finPage(Integer page, Integer lineInteger, String orderBy, String direction) {
 
-		PageRequest pageRequest = new PageRequest(page, lineInteger, Sort.Direction.fromString(direction), orderBy);
+		PageRequest pageRequest = new PageRequest(page,
+				lineInteger,
+				Sort.Direction.fromString(direction),
+				orderBy);
 
 		return repo.findAll(pageRequest);
 	}
