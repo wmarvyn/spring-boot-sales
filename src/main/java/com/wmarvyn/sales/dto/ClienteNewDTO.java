@@ -1,21 +1,39 @@
 package com.wmarvyn.sales.dto;
 
+import com.wmarvyn.sales.services.validation.ClienteInsert;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotEmpty(message = "Campo obrigatorio")
+    @Length(min = 5, max = 80, message = "O tamanho deve ser no minimo 5 cadacteres e no maximo 80 caracteres")
     private String nome;
+
+    @NotEmpty(message = "Campo obeigatorio")
+    @Email(message = "e-mail invalido")
     private String email;
+
+    @NotEmpty(message = "Campo obeigatorio")
     private String cpfCnpj;
     private Integer tipo;
 
+    @NotEmpty(message = "Campo obeigatorio")
     private String logradouro;
+    @NotEmpty(message = "Campo obeigatorio")
     private String numero;
+
     private String complemento;
     private String bairro;
+    @NotEmpty(message = "Campo obeigatorio")
     private String cep;
 
+    @NotEmpty(message = "Campo obeigatorio")
     private String telefone;
     private String telefone2;
     private String telefone3;

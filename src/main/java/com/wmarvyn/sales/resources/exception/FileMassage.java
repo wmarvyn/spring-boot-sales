@@ -5,32 +5,31 @@ import java.io.Serializable;
 public class FileMassage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String fileName;
-	private String massage;
+	private String fieldName;
+	private String message;
 
 	public FileMassage() {
 	}
 
-	public FileMassage(String fileName, String massage) {
+	public FileMassage(String message, String fieldName) {
 		super();
-		this.fileName = fileName;
-		this.massage = massage;
+		this.fieldName = fieldName;
+		this.message = message;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getFieldName() {
+		return fieldName;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
-	public String getMassage() {
-		return massage;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setMassage(String massage) {
-		this.massage = massage;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-
 }

@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 
-import com.wmarvyn.sales.domain.Categoria;
-import com.wmarvyn.sales.dto.CategoriaDTO;
+
 import com.wmarvyn.sales.dto.ClienteNewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +38,7 @@ public class ClienteResources {
 		Cliente obj = Service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) throws IllegalAccessException {
 		Cliente obj = Service.fromDTO(objDto);

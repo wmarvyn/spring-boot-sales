@@ -17,7 +17,6 @@ import com.wmarvyn.sales.domain.Endereco;
 import com.wmarvyn.sales.domain.enums.TipoCliente;
 import com.wmarvyn.sales.dto.ClienteDTO;
 import com.wmarvyn.sales.dto.ClienteNewDTO;
-import com.wmarvyn.sales.repositores.CidadeRepository;
 import com.wmarvyn.sales.repositores.ClienteRepository;
 import com.wmarvyn.sales.repositores.EnderecoRepository;
 import com.wmarvyn.sales.services.exception.DataIntegrityException;
@@ -36,7 +35,7 @@ public class ClienteServie {
 	public Cliente find(Integer id) throws ObjectNotFoundException {
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-		"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+		"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
 		
 		}
 
