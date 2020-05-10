@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.wmarvyn.sales.services.exception.Objectnotfoundexception;
 
+
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
