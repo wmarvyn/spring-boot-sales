@@ -1,1 +1,3 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/cursomc-0.0.1-SNAPSHOTspring-boot-starter-parent-2.1.5.RELEASE.jar
+web: java -D server.port=$PORT -D spring.profiles.active=prod $JAVA_OPTS -jar target/spring-boot-starter-parent-2.1.5.RELEASE.jar
+
+
