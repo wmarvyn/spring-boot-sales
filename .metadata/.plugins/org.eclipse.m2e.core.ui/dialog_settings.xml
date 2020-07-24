@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="D:\Willian\WS2\cursomc"/>
+			<item value="D:\Willian\WS2\sales"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

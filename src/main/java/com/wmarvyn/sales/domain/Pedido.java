@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Pedido implements Serializable {
+public class  Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -127,4 +127,14 @@ public class Pedido implements Serializable {
 	}
 
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Pedido{");
+		sb.append("id=").append(id);
+		sb.append(", pagamento=").append(getPagamento());
+		sb.append(", cliente=").append(cliente);
+		sb.append(", itens=").append(itens);
+		sb.append('}');
+		return sb.toString();
+	}
 }
