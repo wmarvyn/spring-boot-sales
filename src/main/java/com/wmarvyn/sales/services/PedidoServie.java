@@ -33,6 +33,9 @@ public class PedidoServie {
 	@Autowired
 	private ProdutoServie produtoService;
 
+	@Autowired
+	private ClienteServie clienteService;
+
 	public Pedido find(Integer id) throws ObjectNotFoundException {
 		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -55,6 +58,8 @@ public class PedidoServie {
 		for (ItemPedido ip : obj.getItens()) {
 			ip.setDesconto(0.0);
 			ip.setPreco(produtoService.find(ip.getProduto().getID()).getPreco());
+			ip.setProduto(produtoService.find(ip.getProduto().getID()));
+			ip.setPreco(ip.getProduto().getPreco());
 			ip.setPedido(obj);
 		}
 

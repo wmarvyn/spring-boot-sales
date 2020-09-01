@@ -15,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -129,12 +132,27 @@ public class  Pedido implements Serializable {
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Pedido{");
-		sb.append("id=").append(id);
-		sb.append(", pagamento=").append(getPagamento());
-		sb.append(", cliente=").append(cliente);
-		sb.append(", itens=").append(itens);
-		sb.append('}');
-		return sb.toString();
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pedido número: ");
+		builder.append(getId());
+		builder.append(", Instante: ");
+		builder.append(sdf.format(getInstante()));
+		builder.append(", Cliente: ");
+		builder.append(getCliente().getNome());
+		builder.append(", Situação do pagamento: ");
+		try {
+			builder.append(getPagamento().getEstado().getDescricao());
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		builder.append("\nDetalhes:\n");
+		for (ItemPedido ip : getItens()) {
+			builder.append(ip.toString());
+		}
+		builder.append("Valor total: ");
+		builder.append(nf.format(getValorTotalPedido()));
+		return builder.toString();
 	}
 }
