@@ -4,6 +4,7 @@ import com.wmarvyn.sales.domain.ItemPedido;
 import com.wmarvyn.sales.domain.PagamentoComBoleto;
 import com.wmarvyn.sales.domain.Pedido;
 import com.wmarvyn.sales.domain.enums.EstadoPagamento;
+import com.wmarvyn.sales.repositores.ClienteRepository;
 import com.wmarvyn.sales.repositores.PagamentoRepository;
 import com.wmarvyn.sales.repositores.PedidoRepository;
 
@@ -34,7 +35,7 @@ public class PedidoServie {
 	private ProdutoServie produtoService;
 
 	@Autowired
-	private ClienteServie clienteService;
+	private ClienteServie clienteServie;
 
 	public Pedido find(Integer id) throws ObjectNotFoundException {
 		Optional<Pedido> obj = repo.findById(id);
@@ -47,6 +48,7 @@ public class PedidoServie {
 	public Pedido insert(Pedido obj) throws ObjectNotFoundException {
 		obj.setId(null);
 		obj.setInstante(new Date());
+		obj.setCliente(clienteServie.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		if (obj.getPagamento() instanceof PagamentoComBoleto) {
