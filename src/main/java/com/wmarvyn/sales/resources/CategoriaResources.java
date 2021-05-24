@@ -1,6 +1,7 @@
 package com.wmarvyn.sales.resources;
 
 import com.wmarvyn.sales.dto.CategoriaDTO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/categorias")
+@Api(value="API REST Categorias")
+@CrossOrigin(origins = "*")
 public class CategoriaResources {
 
 	@Autowired

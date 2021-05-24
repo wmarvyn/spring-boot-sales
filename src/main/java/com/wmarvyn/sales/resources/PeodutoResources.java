@@ -5,6 +5,7 @@ import com.wmarvyn.sales.dto.ProdutoDTO;
 import com.wmarvyn.sales.resources.utils.URL;
 import com.wmarvyn.sales.services.ProdutoServie;
 import com.wmarvyn.sales.services.exception.Objectnotfoundexception;
+import io.swagger.annotations.Api;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/produtos")
+@Api(value="API REST Produtos")
+@CrossOrigin(origins = "*")
 public class PeodutoResources {
 
 	@Autowired

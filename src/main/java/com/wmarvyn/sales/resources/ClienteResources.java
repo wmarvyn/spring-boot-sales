@@ -7,15 +7,11 @@ import javax.validation.Valid;
 
 
 import com.wmarvyn.sales.dto.ClienteNewDTO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.wmarvyn.sales.domain.Cliente;
 import com.wmarvyn.sales.dto.ClienteDTO;
@@ -27,6 +23,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/clientes")
+@Api(value="API REST Clientes")
+@CrossOrigin(origins = "*")
 public class ClienteResources {
 
 	@Autowired
